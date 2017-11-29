@@ -1,51 +1,160 @@
-body {
-  font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
-  background: #0ea2dc;
-  color: #fff;
+
+/* Basic layout */
+
+* {
+	margin: 0;
+	padding: 0;
 }
 
-h1 {
-  font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
-  text-shadow: 2px 2px 2px #0b81b0;
-  font-style: italic;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 1.9em;
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+	background: #444;
+	text-align: center;
+	
+	display: grid;
+	grid-template-columns: auto minmax(80vw,60vh) auto;
+	grid-template-rows: 80vh auto;
 }
 
 button {
-  box-sizing: border-box;
-  width: 40%;
-  width: -webkit-calc(50% - 19px);
-  width: calc(50% - 19px);
-  height: 55px;
-  margin: 8px;
-  padding: 5px 0;
-  background: #15619b;
+  opacity: 0.3;
+}
+.connected button {
+  opacity: 1;
+}
+
+
+.controls {
+	padding: 5vh;
+
+  grid-column: 2;
+	grid-row: 1;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+} 
+.row button {
+  border-radius: 50%;
+  /* background: #888; */
+  border: 2px solid #888;
+  line-height: 0;
+  width: 8vh;
+  height: 8vh;
+  fill: #888;
+}
+.row button svg {
+  width: 70%;
+  height: 70%;
+  vertical-align: middle;
+}
+.moveUp #upBtn,
+.moveDown #downBtn,
+.flip #flipBtn,
+.row button:hover {
+  background: #888;
+  fill: #fff;
   color: #fff;
-  border: 0;
-  border-radius: 4px;
+}
+
+#connectBtn {
+  width: auto;
+	border: .3vh solid #888;
+  border-radius: 1vh;
+  padding: 0 2vh;
+  opacity: 1;
+}
+.connecting #connectBtn,
+.connected #connectBtn {
+  border: none;
+}
+.connecting #connectBtn:hover,
+.connected #connectBtn:hover {
+  background: none;
+  fill: #888;
+  color: #888;
+
+}
+.master {
+  display: flex;
+  margin-top: 5vh;
+}
+.master button {
+  flex: 1;
+  margin-left: 10px;
+  padding: 2vh;
+  fill: #888;
+}
+.master button:first-child {
+  margin: 0;
+}
+.master button svg {
+  vertical-align: middle;
+  width: 6vh;
+  height: 6vh;
+  margin-right: 1vh;
+}
+.master button:hover {
+  background: #888;
+  color: #000;
+  fill: #000;
+}
+
+button {
   font-size: 1.2em;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: lowercase;
+
+	color: #888;
+	background: none;
+	border: .3vh solid #888;
+	border-radius: 1vh;
+	outline: none;
+	cursor: pointer;
 }
 
 button.emergency {
-  width: 90%;
-  width: -ms-calc(100% - 18px);
-  width: calc(100% - 18px);
+  width: 100%;
+  padding: 3vh;
+  margin-top: 5vh;  
   background: #dd7052;
+  border-color: #dd7052;
+  color: #fff;
 }
 
 button.up,
 button.left,
 button.right,
 button.down {
-  background: #38545b;
+  background: #888;
+  color: #333;
   display: block;
   width: 31%;
   font-style: normal;
   font-size: 2em;
+}
+button.up:hover,
+button.left:hover,
+button.right:hover,
+button.down:hover {
+  background: #aaa;
+  border-color: #aaa;
+}
+.moveBackwards button.down,
+.moveForwards button.up,
+.moveLeft button.left,
+.moveRight button.right {
+  background: #aaa;
+  border-color: #aaa;
+}
+
+.direction-pad {
+  transform: perspective(200px) rotateX(50deg) scale(0.9);
 }
 
 .direction-pad > div {
@@ -53,27 +162,39 @@ button.down {
 }
 
 button.up {
+  padding: 30px 0;
   margin: 20px auto 0 auto;
 }
 
 button.down {
+  padding: 10px 0;
   margin: 0 auto 20px auto;
   clear: both;
 }
 
 button.left {
+  padding: 20px 0;
   float: left;
 }
 
 button.right {
+  padding: 20px 0;
   float: right;
 }
-
+/* 
 button.hover {
   width: 26%;
-  background: #38545b;
+  background: #555;
+  border-color: #555;
+  color: #000;
   font-style: normal;
   margin: 8px 0;
+} */
+
+body > p {
+	grid-column: 2;
+	grid-row: 2;
+	padding: 0 5vw;
 }
 
 p {

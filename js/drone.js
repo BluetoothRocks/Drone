@@ -11,7 +11,7 @@
 'use strict';
 
 const DEFAULT_SPEED = 50;
-const DEFAULT_DRIVE_STEPS = 40;
+const DEFAULT_DRIVE_STEPS = 20;
 
 let ParrotDrone = function() {
 
@@ -457,6 +457,14 @@ let ParrotDrone = function() {
 
     moveRight: function() {
       _setSpeed('yaw', DEFAULT_SPEED, DEFAULT_DRIVE_STEPS);
+    },
+
+    moveUp: function() {
+      _setSpeed('altitude', DEFAULT_SPEED, DEFAULT_DRIVE_STEPS);
+    },
+
+    moveDown: function() {
+      _setSpeed('altitude', -DEFAULT_SPEED, DEFAULT_DRIVE_STEPS);
     }
 
   };
