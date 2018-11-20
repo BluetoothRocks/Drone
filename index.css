@@ -1,0 +1,255 @@
+
+/* Basic layout */
+
+:root {
+	--settings-height: 30vh;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+}
+
+body {
+	background: #444;
+	text-align: center;
+    overflow-x: hidden;
+}
+
+button {
+	color: #888;
+	background: none;
+	border: .3vh solid #888;
+	border-radius: 1vh;
+	outline: none;
+	cursor: pointer;
+}
+
+
+
+
+/* Content */
+
+.content {
+	opacity: 0.3;
+	transition: opacity .5s, fill .5s;
+}
+
+body.connected .content {
+	opacity: 1;
+}
+
+
+
+
+/* Drone */
+
+.content {
+    overflow: hidden;
+}
+.content > div {
+    width: 80vh;
+    max-width: 80vw;
+    margin: 7vh auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+} 
+.row.bottom {
+    margin-top: 5vh;
+}
+.row button {
+    border-radius: 50%;
+    border: 0.3vh solid #888;
+    line-height: 0;
+    width: 6vh;
+    height: 6vh;
+    fill: #888;
+}
+.row button svg {
+    width: 70%;
+    height: 70%;
+    vertical-align: middle;
+}
+.moveUp #upBtn,
+.moveDown #downBtn,
+.flip #flipBtn,
+.row button:hover {
+    background: #888;
+    fill: #fff;
+    color: #fff;
+}
+  
+  
+  
+  
+.content button {
+    font-size: 3vh;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+.content button.up,
+.content button.left,
+.content button.right,
+.content button.down {
+    background: #888;
+    color: #333;
+    display: block;
+    width: 31%;
+    font-style: normal;
+    font-size: 4vh;
+}
+.content button.up:hover,
+.content button.left:hover,
+.content button.right:hover,
+.content button.down:hover {
+    background: #aaa;
+    border-color: #aaa;
+}
+.moveBackwards .content button.down,
+.moveForwards .content button.up,
+.moveLeft .content button.left,
+.moveRight .content button.right {
+    background: #aaa;
+    border-color: #aaa;
+  }
+  
+.direction-pad {
+    transform: perspective(28vh) rotateX(50deg) scale(0.9);
+}
+  
+.direction-pad > div {
+    text-align: center;
+}
+  
+button.up {
+    padding: 4vh 0;
+    margin: 4vh auto 0 auto;
+} 
+button.down {
+    padding: 2vh 0;
+    margin: 0 auto 4vh auto;
+    clear: both;
+} 
+button.left {
+    padding: 3vh 0;
+    float: left;
+}  
+button.right {
+    padding: 3vh 0;
+    float: right;
+}
+  
+  
+
+
+
+/* Settings */
+
+.settings {
+	position: absolute;
+	top: calc(100vh - var(--settings-height));
+	width: 100%;
+	min-height: var(--settings-height);
+	background: #333;
+
+	transition: opacity .3s ease-in-out;
+	opacity: 0.3;
+	pointer-events: none;
+}
+body.connected .settings {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+
+
+/* Pills */
+
+.pills {
+	margin-top: -2.4vh;
+	margin-bottom: 0;
+	display: flex;
+}
+.pills button {
+	margin: 0;
+	padding: 1vh 2vh;
+	border-radius: 0;
+	border-left: none;
+	font-size: 2vh;
+	background: #333;
+}
+.pills button:first-of-type {
+	border-left: .3vh solid #888;
+	border-top-left-radius: 1vh;
+	border-bottom-left-radius: 1vh;
+	margin-left: auto;
+}
+.pills button:last-of-type {
+	border-top-right-radius: 1vh;
+	border-bottom-right-radius: 1vh;
+	margin-right: auto;
+}
+
+body.control button#control {
+	background: #888;
+	color: #fff;
+}
+
+
+
+
+
+/* Views */
+
+.views {
+	padding: 6vh 0;
+	min-height: 6vh;
+	display: block;
+}
+.views > div {
+	display: none;
+}
+
+body.control div#controlView {
+	display: block;
+}
+
+
+#controlView .power {
+    margin: -2vh;
+}
+#controlView .power button {
+	padding: 1vh 2vh;
+	border: 0;
+	font-size: 2vh;
+	color: #ddd;
+}
+#controlView .power button svg {
+	fill: #ddd;
+	width: 4vh;
+	height: 4vh;
+	vertical-align: top;
+	margin-top: -0.9vh;
+}
+
+#controlView button.emergency {
+    width: 80vh;
+    max-width: 80vw;
+    
+    padding: 3vh;
+    margin-top: 7vh;  
+    background: #dd7052;
+    border-color: #dd7052;
+    color: #fff;
+
+    font-size: 3vh;
+    font-weight: bold;
+    text-transform: lowercase;
+}

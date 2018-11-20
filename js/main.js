@@ -2,8 +2,9 @@
 
   function setupUI() {
 
-    let drone = ParrotDrone(),
-      connectButton = document.getElementById('connectBtn'),
+    window.drone = ParrotDrone(),
+    
+      connectButton = document.getElementById('connect'),
       takeOffButton = document.getElementById('takeOffBtn'),
       forwardButton = document.getElementById('forwardBtn'),
       backwardButton = document.getElementById('backwardBtn'),
@@ -19,17 +20,15 @@
     connectButton.addEventListener('click', () => {
       document.body.classList.add('connecting');
       document.body.classList.remove('connected');
-      connectButton.innerHTML = 'CONNECTING...';
+
       drone.connect()
         .then(() => {
           document.body.classList.remove('connecting');
           document.body.classList.add('connected');
-          connectButton.innerHTML = 'CONNECTED';
         })
         .catch(() => {
           document.body.classList.remove('connecting');
           document.body.classList.remove('connected');
-          connectButton.innerHTML = 'CONNECT';
         });
     });
 
@@ -118,17 +117,9 @@
     }      
   }
 
-  function installServiceWorker() {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').then(function(registration) {
-        console.log('ServiceWorker registration successful with scope:', registration.scope);
-      }).catch(function(err) {
-        console.log('ServiceWorker registration failed:', err);
-      });
-    }
-  }
-
   setupUI();
-  installServiceWorker();
-
 })();
+
+
+
+

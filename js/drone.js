@@ -46,7 +46,7 @@ let ParrotDrone = function() {
     return new Promise((resolve, reject) => {
       return _getCharacteristic(serviceID, characteristicID)
         .then(characteristic => {
-          console.log('Got characteristic, now start notifications', characteristicID, characteristic);
+          // console.log('Got characteristic, now start notifications', characteristicID, characteristic);
           characteristic.startNotifications()
             .then(() => {
               console.log('Started notifications for', characteristicID);
@@ -146,7 +146,7 @@ let ParrotDrone = function() {
 
       // If we already have it cached...
       if (service) {
-        console.log('Return cached service', service);
+        // console.log('Return cached service', service);
         resolve(service);
       } else {
 
@@ -154,7 +154,7 @@ let ParrotDrone = function() {
 
         return gattServer.getPrimaryService(_getUUID(serviceID))
           .then(service => {
-            console.log('Obtained service', service);
+            // console.log('Obtained service', service);
             services[serviceID] = service;
             resolve(service);
           })
@@ -216,7 +216,7 @@ let ParrotDrone = function() {
 
     return _getCharacteristic(serviceID, characteristicID)
       .then(characteristic => {
-        console.log('Got characteristic, now write');
+        // console.log('Got characteristic, now write');
         return _writeCommand(characteristic, commandArray)
           .then(() => {console.log('Written command');});
       });
